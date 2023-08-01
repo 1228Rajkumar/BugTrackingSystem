@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../bugCreate.css">
+<style type="text/css">
+table, th, td {
+	border: 1px solid;
+}
+
+th, td {
+	padding: 15px;
+	text-align: left;
+}
+
+.Viewpage {
+	padding: 20px;
+	/* overflow:scroll; */
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* Verification */
+.Verifypage, .Assignpage {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-top: 2%;
+}
+
+.verifyHeading {
+	font-size: 22;
+	font-weight: bolder;
+	margin-bottom: 3%;
+	margin-top: 3%;
+}
+</style>
+<script src="../common.js"></script>
+
+</head>
+<body>
+	<div class="main">
+		<div class="menu">
+			<button id="Create_bug" onclick="ChangeWindow(this)">Create</button>
+			<button id="Assign_bug" onclick="ChangeWindow(this)">AssignBug</button>
+			<button id="Verify" onclick="ChangeWindow(this)">Verification</button>
+			<button id="View" onclick="ChangeWindow(this)">View</button>
+		</div>
+		<form class="create" style="display: none">
+			<div class="bug-create">
+				<div class="box">
+					<label>Bub ID :</label>
+					<input type="number" min="1" name="bugId" id="bugID" required>
+				</div>
+				<div class="bugIdError">BugId is Exists! give unick one</div>
+				<div class="box">
+					<label>Bub Name :</label> 
+					<input type="text" name="bugName" id="bugName" required>
+				</div>
+				<div class="box">
+					<label>Description :</label>
+					<textarea type="text" rows="10" name="description" id="description" required></textarea>
+				</div>
+				<div class="box">
+					<label for="module">Module :</label> 
+					<select name="module" id="module" required>
+						<option value="backend">Backend</option>
+						<option value="frontend">FrontEnd</option>
+						<option value="UI">UI</option>
+					</select>
+				</div>
+				<div class="box">
+					<label for="priority">Priority :</label> 
+					<select name="priority" id="priority" required>
+						<option value="high">High</option>
+						<option value="medium">Medium</option>
+						<option value="low">Low</option>
+					</select>
+				</div>
+			</div>
+			<button type="submit" class="bug_submit">Submit</button>
+		</form>
+		<div class="Viewpage" style="display: none">
+			<div class="verifyHeading">Your BugDetails </div>
+			<table class="bug-table" style="overflow-x: auto;">
+				<tr>
+					<th>BugID</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Module</th>
+					<th>Priority</th>
+					<th>Status</th>
+					<th>Solution</th>
+					<th>RaisedBy</th>
+					<th>RaisedDate</th>
+					<th>AssignedTo</th>
+					<th>solvedDate</th>
+				</tr>
+			</table>
+		</div>
+		
+		<form class="Verifypage" style="display: none">
+			<h1>Bug Verification</h1>
+			<div class="box">
+				<label>Bub ID :</label> <input type="number" min="1" name="bugId"
+					class="BUGID" required>
+			</div>
+			<div class="bugIdisExists-verify bugIdisExists">BugId is Not Exists!</div>
+			<div class="box">
+				<label for="module">Status :</label> <select name="status"
+					id="Status" required>
+					<option value="Closed">Closed</option>
+					<option value="Resolution pending">resolution pending</option>
+				</select>
+			</div>
+			<button type="submit" class="Verify_submit">Submit</button>
+			<div class="verifyHeading">Your BugDetails :</div>
+			<table class="bug-table" style="overflow-x: auto;">
+				<tr>
+					<th>BugID</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Module</th>
+					<th>Priority</th>
+					<th>Status</th>
+					<th>Solution</th>
+					<th>RaisedBy</th>
+					<th>RaisedDate</th>
+					<th>AssignedTo</th>
+					<th>solvedDate</th>
+				</tr>
+			</table>
+		</form>
+		<form class="Assignpage" style="display: none">
+			<h1>Bug Assign</h1>
+			<div class="box">
+				<label>Bub ID :</label> <input type="number" min="1" name="bugId" id="BUGID"
+					required>
+			</div>
+			<div class="bugIdisExists-assign bugIdisExists">BugId is Not Exists!</div>
+			<div class="box">
+				<label>Developer ID :</label> <input type="number" min="1"
+					name="DeveId" id="DeveID" required>
+			</div>
+			<div class="DeveloperIdisExists">Developer ID is Not Exists!</div>
+			<button type="submit" class="Assign_submit">Submit</button>
+			<div>
+				<div class="verifyHeading DeveDetails" style="display: none">Developer Details :</div>
+				<table class="DeveTable"></table>
+			</div>
+			<div class="verifyHeading">Your BugDetails :</div>
+			<table class="bug-table" style="overflow-x: auto;">
+				<tr>
+					<th>BugID</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Module</th>
+					<th>Priority</th>
+					<th>Status</th>
+					<th>Solution</th>
+					<th>RaisedBy</th>
+					<th>RaisedDate</th>
+					<th>AssignedTo</th>
+					<th>solvedDate</th>
+				</tr>
+			</table>
+		</form>
+		<div class="bugCreat-success successMessage">Bug Created Successfuly!</div>
+		<div class="bugVerify-success successMessage">Bug Verifyed Successfuly!</div>
+		<div class="bugAssign-success successMessage">Bug Verifyed Successfuly!</div>
+	</div>
+</body>
+<script src="Tester.js"></script>
+</html>

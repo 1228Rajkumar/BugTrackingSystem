@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../bugCreate.css">
+<style type="text/css">
+table, th, td {
+  border: 1px solid;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+.Viewpage{
+    padding: 20px;
+	/* overflow:scroll; */
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* Verification */
+.Statuspage,.Solutionpage{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3%;
+}
+.Heading{
+    font-size: 22;
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+
+</style>
+<script src="../common.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="menu">
+			<button id="Add_solution" onclick="ChangeWindow(this)">Add Solution</button>
+			<button id="Status_update" onclick="ChangeWindow(this)">Status Update</button>
+			<button id="View" onclick="ChangeWindow(this)">View</button>
+		</div>
+		<div class="Viewpage" style="display:none">
+            <div class="Heading">Your BugDetails </div>
+			<table class="bug-table" style="overflow-x:auto;">
+                <tr>
+                    <th>BugID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Module</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Solution</th>
+                    <th>RaisedBy</th>
+                    <th>RaisedDate</th>
+                    <th>AssignedTo</th>
+                    <th>solvedDate</th>
+                </tr>
+            </table>
+		</div>
+        <form class="Statuspage" style="display: none">
+            <div class="box">
+                <label>Bub ID :</label> <input type="text" name="bugId" class="BUGID"
+                    required>
+            </div>
+            <div class="bugIdisExists-status bugIdisExists">BugId is Not Exists!</div>
+            <div class="box">
+                <label for="status">Status :</label> <select name="status"
+                    id="Status" required>
+                    <option value="Resolved">Resolved</option>
+                    <option value="Not an issue">Not an issue</option>
+                </select>
+            </div>
+            <button type="submit" class="Status_submit">Submit</button>
+            <div class="Heading">Your BugDetails :</div>
+			<table class="bug-table" style="overflow-x:auto;">
+                <tr>
+                    <th>BugID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Module</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Solution</th>
+                    <th>RaisedBy</th>
+                    <th>RaisedDate</th>
+                    <th>AssignedTo</th>
+                    <th>solvedDate</th>
+                </tr>
+            </table>
+        </form>
+		<div class="successMessage bugStatus-success">Status Updated Successfuly!</div>
+        <form class="Solutionpage" style="display: none">
+            <div class="box">
+                <label>Bub ID :</label> <input type="text" name="bugId" id="bugId"
+                    required>
+            </div>
+            <div class="bugIdisExists-solution bugIdisExists">BugId is Not Exists!</div>
+            <div class="box">
+                <label>Solution :</label>
+                <textarea type="text" rows="10" name="solution" id="solution"
+						required></textarea> 
+            </div>
+            <button type="submit" class="Solution_submit">Submit</button>
+            <div class="Heading">Your BugDetails :</div>
+			<table class="bug-table" style="overflow-x:auto;">
+                <tr>
+                    <th>BugID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Module</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Solution</th>
+                    <th>RaisedBy</th>
+                    <th>RaisedDate</th>
+                    <th>AssignedTo</th>
+                    <th>solvedDate</th>
+                </tr>
+            </table>
+        </form>
+        <div class="successMessage bugSolution-success">Solution Updated Successfuly!</div>	
+	</div>
+</body>
+<script src="Developer.js" ></script>
+</html>

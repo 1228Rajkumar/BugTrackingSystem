@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+
+	<package name="default" extends="struts-default">
+
+		<action name="signupDetails">
+			<result name="success">signup.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="loginPage">
+			<result name="success">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="isNameExists"
+			class="bugtracker.UserDetails.UserAction" method="isNameExists"></action>
+		<action name="signUp" class="bugtracker.UserDetails.UserAction"
+			method="signUp"></action>
+		<action name="LogIn" class="bugtracker.UserDetails.UserAction"
+			method="LogIn"></action>
+		<action name="getID" class="bugtracker.UserDetails.UserAction"
+			method="getID"></action>
+		<action name="setModule"
+			class="bugtracker.UserDetails.UserAction" method="setModule"></action>
+		<action name="isDeveloperExists" class="bugtracker.UserDetails.UserAction" method="isDeveloperExists"></action>
+
+
+		<action name="*" class="bugtracker.BugDetails.BugAction"
+			method="{1}">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+
+			<result name="error" type="httpheader">
+				<param name="status">404</param>
+			</result>
+
+			<allowed-methods>
+				isBugIdExists,createBugReport,getBugReports,isBugIdExistByUser,bugVerify,updateStatus,addSolution,LeastBugDeveloper,assignBug
+			</allowed-methods>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
